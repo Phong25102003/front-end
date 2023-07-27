@@ -1,0 +1,112 @@
+<div>
+  <div class="max-w-6xl mx-auto mt-5">
+    <div class="flex items-center justify-between">
+      <h1 class="text-2xl text-center font-weight py-5 mt-5">Product</h1>
+      <div class="relative text-gray-600">
+        <input
+          (search)="onSearch()"
+          [formControl]="search"
+          class="w-full px-4 py-2 pl-12 text-sm bg-white border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+          type="search"
+          placeholder="Tìm kiếm sản phẩm ..."
+        />
+        <button
+          (click)="onSearch()"
+          class="absolute inset-y-0 left-0 flex items-center pl-3 cursor-pointer"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M13.32 14.7l3.994 3.995a1 1 0 1 1-1.414 1.414l-3.995-3.994a7.5 7.5 0 1 1 1.415-1.415zM7.5 13a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <section class="max-w-6xl mx-auto">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap mx-[-32px]">
+          <div class="w-1/3 px-4 mb-4" *ngFor="let item of listProduct">
+            <div class="bg-white rounded shadow-md">
+              <a href="products/{{ item._id }}">
+                <img
+                  class="object-cover h-64 w-full"
+                  src="{{ item.image }}"
+                  alt="Product"
+                />
+              </a>
+              <div class="p-4">
+                <h3 class="text-lg font-bold mb-2 uppercase">
+                  <a href="#">{{ item.name }}</a>
+                </h3>
+                <p class="text-gray-700 font-bold mb-2">${{ item.price }}</p>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-white rounded-full mr-2"></div>
+                  <div class="w-4 h-4 bg-beige rounded-full mr-2"></div>
+                  <div class="w-4 h-4 bg-blue rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--  -->
+    <h1 class="text-2xl text-center font-weight py-5 mt-5">The NEW App</h1>
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-3 gap-4">
+        <div class="flex">
+          <img
+            src="https://i.ibb.co/NZp254T/res11da3cb12b49917a0a34f7a5ba6ce5cafr.jpg"
+            alt=""
+            class="h-44 w-44"
+          />
+          <div class="px-2">
+            <p class="normal-case text-xl pb-2">In-Store Pick Up</p>
+            <span
+              >Skip the wait! Get free shipping when pick up your order
+              in-store.</span
+            >
+          </div>
+        </div>
+        <div class="flex">
+          <img
+            src="https://i.ibb.co/k9mx4Wv/res918eecddb1fea922fe764e4700c419a5fr.jpg"
+            alt=""
+            class="h-44 w-44"
+          />
+          <div class="px-2">
+            <p class="normal-case text-xl pb-2">Scan + Shop</p>
+            <span>
+              Scan the barcodes of your favorite looks to check if nearby stores
+              have your size and fit.</span
+            >
+          </div>
+        </div>
+        <div class="flex">
+          <img
+            src="https://i.ibb.co/5jZw8Yg/rese2676dc6effaad2a4df6e5576f4d1546fr.jpg"
+            alt=""
+            class="h-44 w-44"
+          />
+          <div class="px-2">
+            <p class="normal-case text-xl pb-2">Back in Stock Notifications</p>
+            <span>
+              It's back! Sign up for notifications when your most loved items
+              are back in stock.</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <a
+          href="#"
+          class="text-center inline-block border-2 py-2 px-4 rounded hover:bg-slate-500 transition duration-200"
+        >
+          LEARN MORE ABOUT APP</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

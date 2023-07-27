@@ -1,0 +1,47 @@
+<div class="text-center bg-[#F3F3F3] py-2 px-2">
+  <p>Nhóm 14</p>
+</div>
+<div class="">
+  <div class="bg-white py-2 border-b-2 border-b-slate-200 header">
+    <ul class="flex justify-between max-w-7xl mx-auto">
+      <div class="flex items-center">
+        <div class="mr-7">
+          <img
+            src="https://i.ibb.co/N2T2ZDy/LOGO-360-DUNG-TAM-THOI-MAU-DEN-05.png"
+            alt=""
+            class="h-14"
+          />
+        </div>
+
+        <li>
+          <a
+            class="mr-8 hover:text-red-500 font-bold text-lg underline-hover"
+            aria-current="page"
+            routerLink="/"
+            >Home</a
+          >
+        </li>
+      </div>
+
+      <div *ngIf="!user" class="flex items-center">
+        <button
+          class="px-4 py-2.5 ml-4 bg-blue-400 text-white rounded-md"
+          routerLink="/login"
+        >
+          Login
+        </button>
+      </div>
+      <div *ngIf="user" class="flex items-center">
+        <p class="mr-4">
+          {{ user.email }}
+        </p>
+        <button
+          (click)="logout()"
+          class="px-4 py-2.5 ml-4 bg-blue-400 rounded-md text-white"
+        >
+          Đăng xuất
+        </button>
+      </div>
+    </ul>
+  </div>
+</div>

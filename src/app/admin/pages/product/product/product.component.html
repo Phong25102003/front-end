@@ -1,0 +1,137 @@
+<div>
+  <div class="flex align-items-center bg-transparent mb-4">
+    <h2 class="flex items-center text-3xl">Products</h2>
+    <button
+      (click)="showDialog()"
+      class="px-4 py-2 rounded-md bg-blue-400 text-white ml-3"
+    >
+      Add+
+    </button>
+  </div>
+  <p-table [value]="listProduct" [tableStyle]="{ 'min-width': '60rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th class="">Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>{{ product.name }}</td>
+        <td>
+          <img
+            [src]="product.image"
+            [alt]="product.name"
+            width="100"
+            class="shadow-4"
+          />
+        </td>
+        <td>{{ product.price | currency : "USD" }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.category }}</td>
+        <td>
+          <div class="flex gap-3">
+            <button
+              type="button"
+              (click)="getEditProduct(product._id)"
+              class="px-4 py-2 rounded-md bg-yellow-400 text-white"
+            >
+              Edit
+            </button>
+            <button
+              (click)="deleteProduct(product._id)"
+              type="button"
+              class="px-4 py-2 rounded-md bg-red-400 text-white"
+            >
+              Delete
+            </button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-dialog
+    header="Add product"
+    [(visible)]="visible"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+    [draggable]="false"
+    [resizable]="false"
+    [closeOnEscape]="false"
+    [closable]="false"
+  >
+    <span
+      (click)="hideDialog()"
+      class="text-lg absolute top-3 cursor-pointer right-5"
+      >CLose</span
+    >
+    <div class="flex justify-center relative">
+      <form
+        class="w-[400px] p-5 border border-slate-300"
+        action="#"
+        #myForm="ngForm"
+        (ngSubmit)="onSubmit(myForm)"
+      >
+        <input
+          type="text"
+          name="name"
+          ngModel
+          required
+          #name="ngModel"
+          placeholder="Name"
+          class="w-full outline-none border border-gray-300 rounded-md px-3 py-2 mb-3"
+          value="{{ editProduct.name }}"
+        />
+        <input
+          type="text"
+          name="price"
+          ngModel
+          required
+          #name="ngModel"
+          placeholder="Price"
+          class="w-full outline-none border border-gray-300 rounded-md px-3 py-2 mb-3"
+          value="{{ editProduct.price }}"
+        />
+        <input
+          type="text"
+          name="description"
+          ngModel
+          required
+          #name="ngModel"
+          placeholder="Description"
+          class="w-full outline-none border border-gray-300 rounded-md px-3 py-2 mb-3"
+          value="{{ editProduct.description }}"
+        />
+        <input
+          type="text"
+          name="image"
+          ngModel
+          required
+          #name="ngModel"
+          placeholder="Image"
+          class="w-full outline-none border border-gray-300 rounded-md px-3 py-2 mb-3"
+          value="{{ editProduct.image }}"
+        />
+        <select
+          name="categoryId"
+          value="{{ editProduct.categoryId }}"
+          ngModel
+          #name="ngModel"
+          class="w-full outline-none border border-gray-300 rounded-md px-3 py-2 mb-3"
+        >
+          <option *ngFor="let item of listCategory" value="{{ item._id }}">
+            {{ item.name }}
+          </option>
+        </select>
+        <div class="flex justify-end">
+          <button class="px-5 text-white py-2 bg-blue-400 rounded-md">
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </p-dialog>
+</div>

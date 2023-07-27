@@ -1,0 +1,28 @@
+<div class="sign-in-container mx-auto">
+  <form action="#" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+    <h1>Login</h1>
+    <div class="social-container">
+      <a href="#" class="social"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
+    </div>
+    <span>or use your account</span>
+    <input
+      type="email"
+      name="email"
+      ngModel
+      required
+      #name="ngModel"
+      placeholder="Email"
+    />
+    <input
+      type="password"
+      name="password"
+      ngModel
+      required
+      #name="ngModel"
+      placeholder="Password"
+    />
+    <a href="/register">Don't have an account?</a>
+    <button>Login</button>
+  </form>
+</div>
